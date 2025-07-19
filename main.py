@@ -12,7 +12,7 @@ client = genai.Client(api_key=api_key)
 def main():
     print("Hello from ai-agent!")
     config=types.GenerateContentConfig(
-        tools = available_functions,
+        tools = [available_functions],
         system_instruction = system_prompt,
     )
     verbose = "--verbose" in sys.argv
@@ -27,9 +27,12 @@ def main():
     response = client.models.generate_content(
         model='gemini-2.0-flash-001',
         contents=messages,
-        config=types.GenerateContentConfig(system_instruction=system_prompt)
+        config=config
         )
     print(response.text)
+    if response.function_calls:
+        for function_call_part in response.function_calls:
+            print(f"Calling function: {function_call_part.name}({function_call_part.args})")
     if verbose:
         print(f"User prompt: {user_prompt}")
         print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
