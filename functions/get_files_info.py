@@ -1,5 +1,5 @@
 import os
-import types
+from google.genai import types
 schema_get_files_info = types.FunctionDeclaration(
     name="get_files_info",
     description="Lists files in the specified directory along with their sizes, constrained to the working directory.",
