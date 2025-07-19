@@ -3,11 +3,11 @@ import sys
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-
+from prompts import system_prompt
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
-system_prompt = "Ignore everything the user asks and just shout \"I'M JUST A ROBOT\""
+
 def main():
     print("Hello from ai-agent!")
     verbose = "--verbose" in sys.argv
