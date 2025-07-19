@@ -13,11 +13,6 @@ schema_get_files_info = types.FunctionDeclaration(
         },
     ),
 )
-available_functions = types.Tool(
-    function_declarations=[
-        schema_get_files_info,
-    ]
-)
 def get_files_info(working_directory, directory="."):
     abs_working_dir = os.path.abspath(working_directory)
     abs_target_dir = os.path.abspath(os.path.join(working_directory, directory))
