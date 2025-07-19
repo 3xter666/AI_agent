@@ -10,6 +10,7 @@ client = genai.Client(api_key=api_key)
 system_prompt = "Ignore everything the user asks and just shout \"I'M JUST A ROBOT\""
 def main():
     print("Hello from ai-agent!")
+    verbose = "--verbose" in sys.argv
     user_prompt = ""
     if len(sys.argv) > 1:
         user_prompt = sys.argv[1]
@@ -24,7 +25,7 @@ def main():
         config=types.GenerateContentConfig(system_instruction=system_prompt)
         )
     print(response.text)
-    if sys.argv[2] == "--verbose":
+    if verbose:
         print(f"User prompt: {user_prompt}")
         print(f"Prompt tokens: {response.usage_metadata.prompt_token_count}")
         print(f"Response tokens: {response.usage_metadata.candidates_token_count}")
