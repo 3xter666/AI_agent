@@ -4,12 +4,17 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from prompts import system_prompt
+from functions.get_files_info import available_functions
 load_dotenv()
 api_key = os.environ.get("GEMINI_API_KEY")
 client = genai.Client(api_key=api_key)
 
 def main():
     print("Hello from ai-agent!")
+    config=types.GenerateContentConfig(
+        tools = available_functions,
+        system_instruction = system_prompt,
+    )
     verbose = "--verbose" in sys.argv
     user_prompt = ""
     if len(sys.argv) > 1:
