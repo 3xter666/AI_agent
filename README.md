@@ -138,12 +138,6 @@ The agent includes comprehensive error handling for:
 4. Add tests if applicable
 5. Submit a pull request
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Troubleshooting
-
 ### Common Issues
 
 1. **ModuleNotFoundError**: Ensure all dependencies are installed with `uv sync`
