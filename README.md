@@ -20,7 +20,7 @@ A Python-based AI agent that uses Google's Gemini API to interact with files and
 
 1. Clone the repository:
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/3xter666/AI_agent
 cd AI_agent
 ```
 
